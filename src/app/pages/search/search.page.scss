@@ -1,0 +1,28 @@
+.grid {
+    ion-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 5px 0;
+    }
+
+    ion-row {
+        padding: 0 10px;
+    }
+
+    ion-card {
+        margin: 0 5px;
+        width: calc(100% - 10px);
+        padding: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,.12);
+        border-radius: 8px;
+    }
+}
+
+.searchbar {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    ion-searchbar {
+        border-radius: 10px;
+    }
+}

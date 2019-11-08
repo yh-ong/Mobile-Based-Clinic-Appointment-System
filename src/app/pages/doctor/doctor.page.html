@@ -1,0 +1,18 @@
+<ion-header *ngFor="let item of items">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/clinic/{{item.doctor_id}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Doctor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let item of items">
+  <div class="ion-padding-horizontal">
+    <h2>{{item.doctor_lastname}} {{item.doctor_firstname}}</h2>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" color="tertiary" (click)="Book()">Book</ion-button>
+</ion-footer>

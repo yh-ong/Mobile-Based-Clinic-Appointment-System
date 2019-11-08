@@ -1,0 +1,45 @@
+ion-card {
+    padding: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    border-radius: 8px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background: white;
+}
+
+.clinic-title {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.clinic-location {
+    margin-top: 4px;
+    font-size: 10pt;
+}
+
+.clinic-info {
+    ion-col {
+        padding-left: 0;
+    }
+    small {
+        color: var(--ion-color-medium);
+        font-weight: 600;
+    }
+    h6 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 14pt;
+    }
+}
+
+.clinic-desc {
+    font-size: 11pt;
+    color: var(--ion-color-medium);
+
+    ion-icon {
+        margin-top: 5px;
+    }
+    span {
+        margin-left: 5px;
+    }
+}

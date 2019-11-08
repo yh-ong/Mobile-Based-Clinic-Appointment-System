@@ -1,0 +1,32 @@
+<ion-content class="master-bg">
+
+  <div class="ion-padding section-title">
+    <ion-text>
+      <h1>Hello there!</h1>
+      <h3>Welcome to DocLab</h3>
+      <div>Sign In to Book an Appointment</div>
+    </ion-text>
+  </div>
+
+  <form class="ion-padding">
+
+    <ion-item>
+      <ion-input type="email" name="email" value="" placeholder="Email" [(ngModel)]="formData.email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" name="password" value="" placeholder="Password" [(ngModel)]="formData.password" required></ion-input>
+    </ion-item>
+
+    <div class="ion-margin-top">
+      <ion-text routerLink="/forgot" class="ion-text-right">
+        <p>Forgot Password</p>
+      </ion-text>
+      <ion-button (click)="Login()" expand="block" color="warning">Login</ion-button>
+      <ion-text (click)="Register()" class="ion-text-center">
+        <p>Create an Account</p>
+      </ion-text>
+    </div>
+
+  </form>
+</ion-content>

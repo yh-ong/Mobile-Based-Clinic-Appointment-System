@@ -1,0 +1,32 @@
+<ion-content class="master-bg">
+
+    <div class="ion-padding section-title">
+      <ion-text>
+        <h1>Register Now!</h1>
+        <div>Sign Up Now to Book Appointment</div>
+      </ion-text>
+    </div>
+  
+    <form class="ion-padding">
+  
+      <ion-item>
+        <ion-input type="text" name="name" value="" placeholder="Full Name"  required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" name="email" value="" placeholder="Email"  required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input type="password" name="password" value="" placeholder="Password"  required></ion-input>
+      </ion-item>
+  
+      <div class="ion-margin-top">
+        <ion-button (click)="Register()" expand="block" color="warning">Register</ion-button>
+        <ion-text routerLink="/login" class="ion-text-center">
+          <p>Already have an Account</p>
+        </ion-text>
+      </div>
+  
+    </form>
+  </ion-content>
