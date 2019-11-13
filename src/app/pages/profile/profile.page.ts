@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,31 +11,56 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(public router: Router, public actionsheetCtrl: ActionSheetController) { }
+  items: any;
+  profileName: any;
+  profileCreated: any;
+
+  constructor(public router: Router,
+              public alertCtrl: AlertController,
+              private storage:Storage,
+              private authService:AuthenticationService) { }
 
   ngOnInit() {
+    this.getData();
   }
 
-  async presentActionSheet() {
-    const actionSheet = await this.actionsheetCtrl.create({
-      header: 'Are you sure want log out?',
-      buttons: [{
-        text: 'Log Out',
-        role: 'destructive',
-        icon: 'log-out',
-        handler: () => {
-          console.log('Log Out clicked');
-          this.router.navigate(['login']);
-        }
-      }, {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+  getData() {
+    this.storage.get('USER_INFO').then(data => {
+      if(data != null) {
+        this.items = data;
+        this.profileName = data[0].admin_name;
+        this.profileCreated = data[0].admin_registered;
+      }
+    }, error => {
+      console.log(error);
     });
-    await actionSheet.present();
+  }
+
+  LogOut() {
+    this.authService.logout();
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmation',
+      message: 'Are you sure want <strong>Log Out</strong>?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Log Out',
+          handler: () => {
+            this.LogOut();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

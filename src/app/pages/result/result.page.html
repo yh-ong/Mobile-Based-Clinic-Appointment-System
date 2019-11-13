@@ -1,14 +1,12 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/search"></ion-back-button>
     </ion-buttons>
     <ion-title>Search Result</ion-title>
   </ion-toolbar>
+    <ion-searchbar animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
 </ion-header>
-<div>
-  <ion-searchbar animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
-</div>
 
 <ion-content>
 

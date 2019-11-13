@@ -1,4 +1,4 @@
-<ion-header *ngFor="let item of items">
+<ion-header no-border *ngFor="let item of items">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/clinic/{{item.doctor_id}}"></ion-back-button>
@@ -8,11 +8,63 @@
 </ion-header>
 
 <ion-content *ngFor="let item of items">
+  <div class="profile-card">
+    <ion-row class="ion-text-center">
+      <ion-col size="5">
+        <ion-card>
+          <ion-img src="https://www.browardhealth.org/-/media/Broward-Health/placeholder/Doctor-placeholder-female.jpg">
+          </ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col class="profile-name">
+        <ion-text>
+          <h3 class="ion-no-margin">Dr. {{item.doctor_lastname}}<br>{{item.doctor_firstname}}</h3>
+          <p class="ion-no-margin">{{item.doctor_speciality}}</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+
   <div class="ion-padding-horizontal">
-    <h2>{{item.doctor_lastname}} {{item.doctor_firstname}}</h2>
+    <h6 class="section-title"><b>Description</b></h6>
+    <ion-text class="ion-text-justify clinic-desc">
+      <p>{{item.doctor_desc}}</p>
+    </ion-text>
+  </div>
+
+  <ion-text class="ion-text-justify doctor-details">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-badge color="dark" class="details-title">Langauge Spoke</ion-badge>
+        <ion-label>{{item.doctor_spoke}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-text>
+
+  <div class="booking-wrap">
+    <h6 class="section-title ion-padding-horizontal"><b>Select Date and Time</b></h6>
+    <div class="date-picker">
+      <ion-datetime (ionChange)="DateSlotChange($event)" displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+    </div>
+    <div class="select-timeslot ion-padding-horizontal">
+      <ion-segment (ionChange)="TimeSlotChange($event)">
+        <ion-segment-button value="0900">
+          <ion-label>9:00AM</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="0930">
+          <ion-label>9:30AM</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1000">
+          <ion-label>10:00AM</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1030">
+          <ion-label>10:30AM</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
   </div>
 </ion-content>
 
-<ion-footer>
+<ion-footer no-border>
   <ion-button expand="block" color="tertiary" (click)="Book()">Book</ion-button>
 </ion-footer>

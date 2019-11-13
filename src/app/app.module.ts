@@ -12,6 +12,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { AuthGuardService } from "./services/auth-guard.service";
+import { AuthenticationService } from "./services/authentication.service";
+import { ProviderService } from "./services/provider.service";
+import { LoadingService } from './services/loading.service';
+import { ControllersService } from './services/controllers.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,6 +31,11 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    AuthGuardService,
+    AuthenticationService,
+    ProviderService,
+    LoadingService,
+    ControllersService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

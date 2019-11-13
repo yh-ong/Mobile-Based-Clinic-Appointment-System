@@ -38,6 +38,14 @@ export class DoctorPage implements OnInit {
     });
   }
 
+  TimeSlotChange($event) {
+    console.log($event.target.value);
+  }
+
+  DateSlotChange($event) {
+    console.log($event.target.value);
+  }
+
   Book() {
     this.presentToast();
     // this.router.navigate(['tabs/appointment']);

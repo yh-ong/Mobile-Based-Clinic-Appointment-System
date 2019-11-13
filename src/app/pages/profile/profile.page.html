@@ -4,7 +4,7 @@
       <h2 class="page-title">Profile</h2>
     </ion-col>
     <ion-col class="ion-text-end ion-padding-top">
-      <ion-icon size="large" name="log-out" (click)="presentActionSheet()"></ion-icon>
+      <ion-icon size="large" name="log-out" (click)="presentAlertConfirm()"></ion-icon>
     </ion-col>
   </ion-row>
 </div>
@@ -18,8 +18,8 @@
     </ion-col>
     <ion-col class="profile-name">
       <ion-text>
-        <h3 class="ion-no-margin">Dr. Venessa</h3>
-        <ion-badge color="warning">16 Oct 2019</ion-badge>
+        <h3 class="ion-no-margin">{{profileName}}</h3>
+        <ion-badge color="warning">{{profileCreated}}</ion-badge>
       </ion-text>
     </ion-col>
   </ion-row>

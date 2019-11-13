@@ -10,19 +10,23 @@
     <form class="ion-padding">
   
       <ion-item>
-        <ion-input type="text" name="name" value="" placeholder="Full Name"  required></ion-input>
+        <ion-input type="text" name="name" value="" placeholder="Full Name" [(ngModel)]="formData.username" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="email" name="email" value="" placeholder="Email"  required></ion-input>
+        <ion-input type="email" name="email" value="" placeholder="Email" [(ngModel)]="formData.email" required></ion-input>
       </ion-item>
   
       <ion-item>
-        <ion-input type="password" name="password" value="" placeholder="Password"  required></ion-input>
+        <ion-input type="password" name="password" value="" placeholder="Password" [(ngModel)]="formData.password" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-input type="password" name="confirm_password" value="" placeholder="Confirm Password" [(ngModel)]="formData.confirm_password" required></ion-input>
       </ion-item>
   
       <div class="ion-margin-top">
-        <ion-button (click)="Register()" expand="block" color="warning">Register</ion-button>
+        <ion-button (click)="RegisterUser()" expand="block" color="warning">Register</ion-button>
         <ion-text routerLink="/login" class="ion-text-center">
           <p>Already have an Account</p>
         </ion-text>

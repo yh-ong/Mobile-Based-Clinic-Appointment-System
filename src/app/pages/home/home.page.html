@@ -1,6 +1,6 @@
-<ion-content>
+<ion-content *ngFor="let item of items">
   <div class="ion-padding-horizontal page-header">
-    <h2 class="page-title">Hello, YH ONG</h2>
+    <h2 class="page-title">Hello, {{item.admin_name}}</h2>
     <ion-text>
       <p>What are you looking for?</p>
     </ion-text>
