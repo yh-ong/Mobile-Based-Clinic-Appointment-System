@@ -74,14 +74,11 @@ Install plugin with
 1. create a folder name as `doclab`, clone all the file inside the folder.
 2. install **xampp** or **any web server tool** to your computer, and start `Apache` and `MySQL` services.
 3. type `http://localhost/doclab/` to the web browser
-4. `service/provider.service.ts` setup all the link at here:
+4. `service/provider.service.ts` setup all the server connection here:
 
 ```javascript
-const API_URL = "http://localhost/doclab/patient/";
-const IMG_URL = "http://localhost/doclab/uploads/";
-const EMPTYIMG_URL = "http://localhost/doclab/patient/uploads/empty/empty-avatar.jpg";
-const ICON_URL = "http://localhost/doclab/uploads/icons/";
-const LOGIN_URL = "http://localhost/doclab/patient/login.php";
+const SERVER_NAME = "http://localhost";
+...
 ```
 
 #### Build
