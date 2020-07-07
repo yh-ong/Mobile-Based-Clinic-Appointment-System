@@ -7,6 +7,11 @@ import { LoadingController, AlertController } from '@ionic/angular';
 export class ControllersService {
   isLoading = false;
 
+  pattern :any = {
+    email: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+    text: /^[A-Za-z ]+$/,
+  };
+
   constructor(private loadingCtrl:LoadingController, private alertCtrl: AlertController) { }
 
   async presentLoading() {
@@ -36,4 +41,5 @@ export class ControllersService {
     });
     await alert.present();
   }
+
 }

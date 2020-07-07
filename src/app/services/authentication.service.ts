@@ -39,19 +39,21 @@ export class AuthenticationService {
     let dataPost = new FormData();
     dataPost.append('inputemail', email);
     dataPost.append('inputpass', password);
-    let url: string = "http://localhost/crud/pages/login.php";
+
+    let url: string = this.providerSvc.loginURL;
+
     let data: Observable<any> = this.http.post(url, dataPost);
 
     data.subscribe(res => {
-      if (res != null) {
+      if (res[0] == 0) {
+        this.loadingSvc.dismissLoading();
+        this.alertPopUp("Attention", "Email & Password Incorrect!", "Try Again");
+      } else {
         this.loadingSvc.dismissLoading();
         return this.storage.set('USER_INFO', res).then((res) => {
           this.router.navigate(['tabs/home']);
           this.authenticationState.next(true);
         });
-      } else {
-        this.loadingSvc.dismissLoading();
-        this.alertPopUp("Attention", "Email & Password Incorrect!", "Try Again");
       }
     });
 
