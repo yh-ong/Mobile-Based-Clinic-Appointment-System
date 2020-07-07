@@ -1,0 +1,46 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-item>
+    <ion-label position="floating">Address</ion-label>
+    <ion-input type="text" name="name" [(ngModel)]="formData.address" required>
+    </ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="formData.city"  required></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">State</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="formData.state" required>
+        </ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <ion-label position="floating">Zipcode</ion-label>
+    <ion-input type="text" name="name" [(ngModel)]="formData.zipcode" required>
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Country</ion-label>
+      <ion-select name="country" [(ngModel)]="formData.country" (IonChange)="formData.country" required>
+        <ion-select-option *ngFor="let item of items" value="{{item}}">{{item}}</ion-select-option>
+      </ion-select>
+  </ion-item>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-button expand="block" fill="outline" color="success" (click)="Save()">Save Changes</ion-button>
+</ion-footer>

@@ -1,0 +1,74 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Personal Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="formData.firstname" required></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="formData.lastname" required></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" name="email" [(ngModel)]="formData.email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Identity/ Passport Number</ion-label>
+    <ion-input type="text" name="identity" [(ngModel)]="formData.identity" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Gender</ion-label>
+    <ion-select name="gender" [(ngModel)]="formData.gender" (IonChange)="formData.gender" required>
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Date of Birth</ion-label>
+    <ion-datetime [(ngModel)]="formData.dob" (ionChange)="formData.dob" displayFormat="YYYY-MM-DD" pickerFormat="YYYY MMMM DD"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contact</ion-label>
+    <ion-input type="text" name="contact" [(ngModel)]="formData.contact" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Marital Status</ion-label>
+    <ion-select name="maritalstatus" [(ngModel)]="formData.maritalstatus" (IonChange)="formData.maritalstatus" required>
+      <ion-select-option value="single">Single</ion-select-option>
+      <ion-select-option value="married">Married</ion-select-option>
+      <ion-select-option value="widowed">Widowed</ion-select-option>
+      <ion-select-option value="divorced">Divorced</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nationality</ion-label>
+    <ion-select name="nationality" [(ngModel)]="formData.nationality" (IonChange)="formData.nationality" required>
+      <ion-select-option *ngFor="let item of items" value="{{item}}">{{item}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-button expand="block" fill="outline" color="success" (click)="Save()">Save Changes</ion-button>
+</ion-footer>

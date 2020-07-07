@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar (ionInput)="filterData($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Clinic Result</ion-list-header>
+
+    <ion-item *ngFor="let item of items" (click)="clinicProfile(item.clinic_id)">
+      <!-- <ion-avatar slot="start">
+        <img src="{{item.clinicimg_filename}}">
+      </ion-avatar> -->
+      <ion-label>
+        <h2>{{item.clinic_name}}</h2>
+        <p>{{item.clinic_address}}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

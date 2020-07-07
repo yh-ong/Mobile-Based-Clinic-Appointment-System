@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Medical Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let item of items">
+    <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{item.med_date}}</ion-card-subtitle>
+          <h5>{{item.clinic_name}} visited Dr. {{item.doctor_firstname}} {{item.doctor_lastname}}</h5>
+          <ion-card-title>{{item.med_diagnosis}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-text>
+            <h6><b>Sympton</b></h6>
+            <p>{{item.med_sympton}}</p>
+          </ion-text>
+          <ion-text>
+            <h6><b>Advice</b></h6>
+            <p>{{item.med_diagnosis}}</p>
+          </ion-text>
+        </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

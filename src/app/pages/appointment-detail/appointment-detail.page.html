@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Appointment Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-horizontal">
+    <ion-text>
+      <h5>Date</h5>
+    </ion-text>
+    <ion-text>
+      <p>{{date}}</p>
+    </ion-text>
+
+    <ion-text>
+      <h5>Time</h5>
+    </ion-text>
+    <ion-text>
+      <p>{{time}}</p>
+    </ion-text>
+    
+    <ion-text>
+      <h5>Select Treatment</h5>
+    </ion-text>
+    <ion-select placeholder="Select" [(ngModel)]="treatment">
+      <ion-select-option *ngFor="let item of items" value="{{item.treatment_name}}">{{item.treatment_name}}
+      </ion-select-option>
+    </ion-select>
+  </div>
+  
+</ion-content>
+
+<ion-footer no-border>
+  <ion-button expand="block" color="primary" (click)="BookAppointment()">Book</ion-button>
+</ion-footer>

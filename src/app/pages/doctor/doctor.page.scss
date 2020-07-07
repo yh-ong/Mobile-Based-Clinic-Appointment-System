@@ -26,6 +26,11 @@ ion-toolbar {
 
     ion-card {
         margin: 20px 0;
+        background-color: white;
+    }
+
+    ion-img {
+        height: 180px;
     }
 
     .profile-name {
@@ -54,5 +59,22 @@ ion-toolbar {
 .booking-wrap {
     .date-picker {
         padding: 0 35%;
+    }
+}
+
+.doctor-info {
+    margin-top: 12px;
+    
+    ion-col {
+        padding-left: 0;
+    }
+    small {
+        color: var(--ion-color-medium);
+        font-weight: 600;
+    }
+    h6 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 14pt;
     }
 }

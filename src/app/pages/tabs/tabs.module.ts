@@ -18,16 +18,20 @@ const routes: Routes = [
         loadChildren: '../home/home.module#HomePageModule'
       },
       {
+        path: 'appointment',
+        loadChildren: '../appointment/appointment.module#AppointmentPageModule'
+      },
+      {
         path: 'search',
         loadChildren: '../search/search.module#SearchPageModule'
       },
       {
-        path: 'profile',
-        loadChildren: '../profile/profile.module#ProfilePageModule'
+        path: 'message',
+        loadChildren: '../message/message.module#MessagePageModule'
       },
       {
-        path: 'appointment',
-        loadChildren: '../appointment/appointment.module#AppointmentPageModule'
+        path: 'profile',
+        loadChildren: '../profile/profile.module#ProfilePageModule'
       },
     ]
     // ! End

@@ -8,24 +8,37 @@
 </ion-header>
 
 <ion-content *ngFor="let item of items">
+  
   <div class="profile-card">
     <ion-row class="ion-text-center">
       <ion-col size="5">
         <ion-card>
-          <ion-img src="https://www.browardhealth.org/-/media/Broward-Health/placeholder/Doctor-placeholder-female.jpg">
+          <ion-img src="{{imgURL}}{{item.clinic_id}}/doctor/{{item.doctor_avatar}}">
           </ion-img>
         </ion-card>
       </ion-col>
       <ion-col class="profile-name">
         <ion-text>
           <h3 class="ion-no-margin">Dr. {{item.doctor_lastname}}<br>{{item.doctor_firstname}}</h3>
-          <p class="ion-no-margin">{{item.doctor_speciality}}</p>
+          <p class="ion-no-margin">{{item.speciality_name}}</p>
         </ion-text>
       </ion-col>
     </ion-row>
   </div>
 
   <div class="ion-padding-horizontal">
+    <ion-row class="doctor-info">
+      <ion-col>
+        <small>Consultation Fees</small>
+        <h6>RM {{item.consult_fee}}</h6>
+      </ion-col>
+      <ion-col (click)="reviewModal()">
+        <small>Reviews</small>
+        <h6 *ngIf="countReviews == 0">0.0</h6>
+        <h6 *ngIf="countReviews > 0">{{totalReviewRate}}</h6>
+      </ion-col>
+    </ion-row>
+    
     <h6 class="section-title"><b>Description</b></h6>
     <ion-text class="ion-text-justify clinic-desc">
       <p>{{item.doctor_desc}}</p>
@@ -44,21 +57,12 @@
   <div class="booking-wrap">
     <h6 class="section-title ion-padding-horizontal"><b>Select Date and Time</b></h6>
     <div class="date-picker">
-      <ion-datetime (ionChange)="DateSlotChange($event)" displayFormat="DD MMMM YYYY" placeholder="Select Date"></ion-datetime>
+      <ion-datetime (ionBlur)="DateSlotChange($event)" (ionChange)="DateSlotChange($event)" displayFormat="DD MMM YYYY" min="{{minDate}}" pickerFormat="DD MMM YYYY" placeholder="Select Date"></ion-datetime>
     </div>
     <div class="select-timeslot ion-padding-horizontal">
-      <ion-segment (ionChange)="TimeSlotChange($event)">
-        <ion-segment-button value="0900">
-          <ion-label>9:00AM</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="0930">
-          <ion-label>9:30AM</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="1000">
-          <ion-label>10:00AM</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="1030">
-          <ion-label>10:30AM</ion-label>
+      <ion-segment (ionChange)="TimeSlotChange($event)" *ngFor="let itemSch of itemsSchedule">
+        <ion-segment-button value="{{itemSch.time_slot}}">
+          <ion-label>{{itemSch.time_slot}}</ion-label>
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -66,5 +70,5 @@
 </ion-content>
 
 <ion-footer no-border>
-  <ion-button expand="block" color="tertiary" (click)="Book()">Book</ion-button>
+  <ion-button expand="block" color="tertiary" (click)="Book()">Proceed</ion-button>
 </ion-footer>

@@ -8,9 +8,17 @@
     </div>
   
     <form class="ion-padding">
-  
+
       <ion-item>
-        <ion-input type="text" name="name" value="" placeholder="Full Name" [(ngModel)]="formData.username" required></ion-input>
+        <ion-input type="text" name="name" value="" placeholder="First Name" [(ngModel)]="formData.firstname" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" name="name" value="" placeholder="Last Name/ Surname" [(ngModel)]="formData.lastname" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" name="identity" value="" placeholder="Identity Number/ Passport Number" [(ngModel)]="formData.identity" required></ion-input>
       </ion-item>
 
       <ion-item>

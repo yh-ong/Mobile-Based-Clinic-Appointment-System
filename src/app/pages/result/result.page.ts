@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ProviderService } from 'src/app/services/provider.service';
 
 @Component({
   selector: 'app-result',
@@ -9,17 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ResultPage implements OnInit {
   itemsClinic: any;
+  itemsDoctor: any;
   searchTerm: string = "";
+  imgURL: string = this.providerSvc.imgURL;
 
-  constructor(public http: HttpClient, public router:Router) { }
+  constructor(public http: HttpClient, public router: Router, public providerSvc: ProviderService) { }
 
   ngOnInit() {
     this.loadData();
   }
 
   loadData() {
-    let url = "http://localhost/crud/pages/result.php";
-    this.http.get(url)
+    this.providerSvc.getData("result_clinic.php")
       .subscribe(data => {
         if (data != null) {
           this.itemsClinic = data;
@@ -30,11 +32,31 @@ export class ResultPage implements OnInit {
       }, error => {
         console.log("Load Data Failed:", JSON.stringify(error));
       });
+
+    this.providerSvc.getData("result_doctor.php")
+      .subscribe(data => {
+        if (data != null) {
+          this.itemsDoctor = data;
+          console.log(data);
+        } else {
+          console.log("No Result");
+        }
+      }, error => {
+        console.log("Load Data Failed:", JSON.stringify(error));
+      })
   }
 
-  clinicProfile(id:number) {
+  clinicProfile(id: number) {
     if (id != null) {
       this.router.navigate(['/clinic', id]);
+    } else {
+      console.log("Error");
+    }
+  }
+
+  doctorProfile(id: number) {
+    if (id != null) {
+      this.router.navigate(['/doctor', id]);
     } else {
       console.log("Error");
     }

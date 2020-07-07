@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Filter By Doctor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-list>
+    <div class="ion-padding-horizontal">
+      <h6 class="section-title text-grey">Type of Treatment</h6>
+    </div>
+    <ion-item *ngFor="let CategoryItem of categoryItems">
+      <ion-checkbox [(ngModel)]="CategoryItem.isChecked" (ionChange)="checkEvent()" color="dark" slot="start"></ion-checkbox>
+      <ion-label>{{CategoryItem.speciality_name}}</ion-label>
+    </ion-item>
+  </ion-list> -->
+  
+  <ion-list>
+    <div class="ion-padding-horizontal">
+      <h6 class="section-title text-grey">Gender</h6>
+    </div>
+    <ion-item>
+      <ion-checkbox value="male" (click)="getCheckboxValue($event)" color="dark" slot="start"></ion-checkbox>
+      <ion-label>Male</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox value="female" (click)="getCheckboxValue($event)" color="dark" slot="start"></ion-checkbox>
+      <ion-label>Female</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="section ion-padding-horizontal">
+    <h6 class="section-title text-grey">Consultation Fee Range: RM {{lowerPrice}} - {{higherPrice}}</h6>
+    <!-- <ion-range min="20" max="80" pin (ionBlur)="PriceRangeChanged($event)">
+       (ngModelChange)="setLabel()"
+      <ion-icon size="small" slot="start" name="cash"></ion-icon>
+      <ion-icon slot="end" name="cash"></ion-icon>
+    </ion-range> -->
+
+    <ion-range id="dual-range" dual-knobs pin color="dark" (ionChange)="PriceRangeChanged($event, $event)">
+      <ion-icon slot="start" size="small" name="brush"></ion-icon>
+      <ion-icon slot="end" name="brush"></ion-icon>
+    </ion-range>
+  </div>
+
+  <div class="ion-padding ion-text-center">
+    <ion-button color="success" shape="round" (click)="Apply()">
+      <ion-text>Apply</ion-text>
+    </ion-button>
+  </div>
+</ion-content>

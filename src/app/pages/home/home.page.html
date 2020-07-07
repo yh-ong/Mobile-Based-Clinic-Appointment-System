@@ -1,6 +1,6 @@
 <ion-content *ngFor="let item of items">
   <div class="ion-padding-horizontal page-header">
-    <h2 class="page-title">Hello, {{item.admin_name}}</h2>
+    <h2 class="page-title">Hello, {{item.patient_lastname}} {{item.patient_firstname}}</h2>
     <ion-text>
       <p>What are you looking for?</p>
     </ion-text>
@@ -10,31 +10,31 @@
 
     <ion-row>
 
-      <ion-col>
+      <ion-col routerLink="/result">
         <ion-card>
-          <h5>Acupuncture</h5>
-          <h6>Profile</h6>
+          <h5>Book</h5>
+          <h6>Appointment</h6>
         </ion-card>
       </ion-col>
 
-      <ion-col>
+      <ion-col routerLink="/medical-list">
         <ion-card>
-          <h5>Audiologist</h5>
-          <h6>Hello</h6>
+          <h5>Medical</h5>
+          <h6>Result</h6>
         </ion-card>
       </ion-col>
 
-      <ion-col>
+      <ion-col routerLink="/tabs/search">
         <ion-card>
-          <h5>Dentist</h5>
-          <h6>Hello</h6>
+          <h5>Category</h5>
+          <h6>Appointment</h6>
         </ion-card>
       </ion-col>
-
-      <ion-col>
+      
+      <ion-col routerLink="/tabs/appointment">
         <ion-card>
-          <h5>Physiotherapist</h5>
-          <h6>Hello</h6>
+          <h5>History</h5>
+          <h6>Appointment</h6>
         </ion-card>
       </ion-col>
 
@@ -43,24 +43,29 @@
   </div>
 
   <div class="upcoming-section">
-    <h6 class="ion-padding-horizontal section-title"><b>Upcoming</b></h6>
+    <h6 class="ion-padding-horizontal section-title"><b>Latest</b></h6>
 
-    <ion-card>
-      <ion-row>
-        <ion-col size="3">
-          <ion-avatar>
-            <img src="http://jaybabani.com/ultra-admin-html/preview/data/doctors/doctor-1.jpg">
-          </ion-avatar>
-        </ion-col>
-        <ion-col>
-          <ion-label>
-            <h5><b>Dr. Venessa</b></h5>
-            <h6>Dentist</h6>
-            <ion-badge color="success">16 Oct 2019, 6:00 PM</ion-badge>
-          </ion-label>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+    <div *ngIf="empty != 0" class="ion-padding-horizontal">
+      <h6>No Appointment Found</h6>
+    </div>
+    <div *ngIf="empty != 1">
+      <ion-card (click)="promptNotify()">
+        <ion-row>
+          <ion-col size="3">
+            <ion-avatar>
+              <img src="{{imgURL}}{{clinicID}}/doctor/{{doctorAvatar}}">
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-label>
+              <h5><b>Dr. {{doctorName}}</b></h5>
+              <h6>{{Speciality}}</h6>
+              <ion-badge color="success">{{appDate}}, {{appTime}}</ion-badge>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
 
   </div>
 

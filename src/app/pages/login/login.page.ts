@@ -5,6 +5,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage'
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ControllersService } from 'src/app/services/controllers.service';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,18 @@ export class LoginPage implements OnInit {
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public storage: Storage,
-              private authSerive:AuthenticationService) { }
+              private authSerive:AuthenticationService,
+              public ctrl: ControllersService) { }
 
   ngOnInit() {}
 
   LoginUser() {
     if (this.formData.email != null && this.formData.password != null) {
-      this.authSerive.login(this.formData.email, this.formData.password);
+      if (this.formData.email.match(this.ctrl.pattern.email)) {
+        this.authSerive.login(this.formData.email, this.formData.password);
+      } else {
+        this.alertPopUp("Attention", "Invalid Email Format!", "Try Again");
+      }
     } else {
       this.alertPopUp("Attention", "Email & Password Field is Empty!", "Try Again");
     }

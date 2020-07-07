@@ -1,5 +1,7 @@
 {
-  "name": "ClinicApp",
-  "integrations": {},
+  "name": "ClinicME",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

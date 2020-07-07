@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ProviderService } from 'src/app/services/provider.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +13,16 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class ProfilePage implements OnInit {
 
   items: any;
-  profileName: any;
+  profileLastname: any;
+  profileFirstname: any;
   profileCreated: any;
+  profileAvatar: any;
 
   constructor(public router: Router,
               public alertCtrl: AlertController,
               private storage:Storage,
-              private authService:AuthenticationService) { }
+              private authService:AuthenticationService,
+              private providerSvc: ProviderService) { }
 
   ngOnInit() {
     this.getData();
@@ -28,8 +32,14 @@ export class ProfilePage implements OnInit {
     this.storage.get('USER_INFO').then(data => {
       if(data != null) {
         this.items = data;
-        this.profileName = data[0].admin_name;
-        this.profileCreated = data[0].admin_registered;
+        this.profileLastname = data[0].patient_lastname;
+        this.profileFirstname = data[0].patient_firstname;
+        this.profileCreated = data[0].date_created;
+        if (this.profileAvatar == null) {
+          this.profileAvatar = this.providerSvc.emptyURL;
+        } else  {
+          this.profileAvatar = data[0].patient_avatar;
+        }
       }
     }, error => {
       console.log(error);
@@ -38,6 +48,18 @@ export class ProfilePage implements OnInit {
 
   LogOut() {
     this.authService.logout();
+  }
+
+  editInfo() {
+    this.router.navigate(['/profile-edit']);
+  }
+
+  editAddress() {
+    this.router.navigate(['/profile-address']);
+  }
+
+  editPassword() {
+    this.router.navigate(['/profile-password']);
   }
 
   async presentAlertConfirm() {
@@ -50,7 +72,7 @@ export class ProfilePage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            
           }
         }, {
           text: 'Log Out',

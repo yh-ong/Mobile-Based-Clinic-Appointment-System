@@ -26,10 +26,14 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      // status bar
+      this.statusBar.styleLightContent();
 
       this.authenticateService.authenticationState.subscribe(state => {
         if(state) {
           this.router.navigate(['tabs/home']);
+          // this.router.navigate(['doctor/1']);
+          // this.router.navigate(['clinic/1/doctor/1']);
         } else {
           this.router.navigate(['login']);
         }

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/appointment"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col>
+        <h6><b>Appointment Date</b></h6>
+      </ion-col>
+      <ion-col>
+        <h6>{{appDate}}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6><b>Appointment Time</b></h6>
+      </ion-col>
+      <ion-col>
+        <h6>{{appTime}}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6><b>Day Left</b></h6>
+      </ion-col>
+      <ion-col>
+        <h6><span *ngIf="diffDays > 0">{{diffDays}}</span></h6>
+        <h6><span *ngIf="diffDays == 0">Today</span></h6>
+        <h6><span *ngIf="diffDays < 0">Past</span></h6>
+      </ion-col>
+    </ion-row>
+    
+  </div>
+
+  <ion-card routerLink="/doctor/{{doctorID}}">
+    <ion-card-header>
+      <!-- <ion-card-subtitle>Doctor</ion-card-subtitle> -->
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="{{imgURL}}">
+        </ion-avatar>
+        <ion-label><ion-card-title>{{doctorName}}</ion-card-title></ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Phone</ion-label>
+        <ion-label>{{doctorContact}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-label>{{doctorEmail}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <!-- <ion-card-subtitle>Clinic</ion-card-subtitle> -->
+      <ion-card-title>{{clinicName}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Phone</ion-label>
+        <ion-label>{{clinicContact}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-label>{{clinicEmail}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+    <ion-item routerLink="/clinic/{{clinicID}}">
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>{{clinicAddress}}{{clinicZipcode}}{{clinicState}}</ion-label>
+      <ion-button fill="outline" slot="end">View</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <div class="button-area">
+    <div *ngIf="diffDays > 1">
+      <ion-button *ngIf="status == 0" expand="block" color="success" (click)="confirmAppointment()">
+        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>Confirm Appointment
+      </ion-button>
+      <ion-button *ngIf="status == 1" expand="block" color="danger" fill="outline" (click)="cancelAppointment()">
+        <ion-icon slot="start" name="close"></ion-icon>Delete Appointment
+      </ion-button>
+    </div>
+    <ion-button *ngIf="consultStatus == 1" expand="block" color="warning" (click)="rateModal()">
+      <ion-icon slot="start" name="star-half"></ion-icon>Rate
+    </ion-button>
+  </div>
+
+</ion-content>

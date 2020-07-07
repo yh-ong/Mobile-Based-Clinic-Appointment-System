@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ratings & Reviews</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col size="3">
+          <ion-badge color="primary">
+            <h2>{{totalReviewRate}}</h2>
+          </ion-badge>
+        </ion-col>
+        <ion-col>
+          <ion-card-title>{{totalReviewRate}} out of 5 stars</ion-card-title>
+          <ion-card-subtitle>{{countReviews}} reviews</ion-card-subtitle>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+  
+    <ion-card-content class="progress-card">
+      <ion-row>
+        <ion-label>5 Star</ion-label>
+        <ion-progress-bar value="{{fivestar}}"></ion-progress-bar>
+      </ion-row>
+      <ion-row>
+        <ion-label>4 Star</ion-label>
+        <ion-progress-bar value="{{fourstar}}"></ion-progress-bar>
+      </ion-row>
+      <ion-row>
+        <ion-label>3 Star</ion-label>
+        <ion-progress-bar value="{{threestar}}"></ion-progress-bar>
+      </ion-row>
+      <ion-row>
+        <ion-label>2 Star</ion-label>
+        <ion-progress-bar value="{{twostar}}"></ion-progress-bar>
+      </ion-row>
+      <ion-row>
+        <ion-label>1 Star</ion-label>
+        <ion-progress-bar value="{{onestar}}"></ion-progress-bar>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item *ngFor="let item of items">
+    <ion-avatar slot="start">
+      <img src="{{img}}">
+    </ion-avatar>
+    <ion-label>
+      <h3>{{item.patient_firstname}} {{item.patient_lastname}}</h3>
+      <h6>{{item.rating}}/5</h6>
+      <p>{{item.review}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

@@ -12,13 +12,13 @@
   <ion-row class="ion-text-center">
     <ion-col size="4">
       <ion-card>
-        <ion-img src="https://www.browardhealth.org/-/media/Broward-Health/placeholder/Doctor-placeholder-female.jpg">
+        <ion-img src="{{profileAvatar}}">
         </ion-img>
       </ion-card>
     </ion-col>
     <ion-col class="profile-name">
       <ion-text>
-        <h3 class="ion-no-margin">{{profileName}}</h3>
+        <h3 class="ion-no-margin">{{profileLastname}} {{profileFirstname}}</h3>
         <ion-badge color="warning">{{profileCreated}}</ion-badge>
       </ion-text>
     </ion-col>
@@ -30,15 +30,25 @@
 
   <ion-list>
 
-    <ion-item>
+    <ion-item (click)="editInfo()">
       <ion-icon slot="end" name="md-create"></ion-icon>
       <ion-label>Edit Profile</ion-label>
     </ion-item>
+    
+    <ion-item (click)="editAddress()">
+      <ion-icon slot="end" name="md-pin"></ion-icon>
+      <ion-label>Edit Address</ion-label>
+    </ion-item>
 
-    <ion-item>
+    <ion-item (click)="editPassword()">
+      <ion-icon slot="end" name="md-lock"></ion-icon>
+      <ion-label>Change Password</ion-label>
+    </ion-item>
+
+    <!-- <ion-item>
       <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
       <ion-label>Account Verification</ion-label>
-    </ion-item>
+    </ion-item> -->
 
   </ion-list>
 

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar (ionInput)="filterData($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Doctor Result</ion-list-header>
+
+    <div class="ion-padding-horizontal" *ngIf="empty == 1"><h5>No Result Found</h5></div>
+
+    <ion-item *ngFor="let item of items" (click)="doctorProfile(item.doctor_id)">
+      <ion-avatar slot="start">
+        <img src="{{imgURL}}{{item.clinic_id}}/doctor/{{item.doctor_avatar}}">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.doctor_lastname}} {{item.doctor_firstname}}</h2>
+        <h3>{{item.speciality_name}}</h3>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

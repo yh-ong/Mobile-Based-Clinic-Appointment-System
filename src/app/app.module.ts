@@ -17,6 +17,9 @@ import { AuthenticationService } from "./services/authentication.service";
 import { ProviderService } from "./services/provider.service";
 import { LoadingService } from './services/loading.service';
 import { ControllersService } from './services/controllers.service';
+import { DatePipe } from '@angular/common';
+
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +29,7 @@ import { ControllersService } from './services/controllers.service';
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,
@@ -36,7 +39,9 @@ import { ControllersService } from './services/controllers.service';
     ProviderService,
     LoadingService,
     ControllersService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    DatePipe,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rate Doctor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-horizontal">
+    <ion-text><h6>Rating</h6></ion-text>
+    <ion-segment (ionChange)="rateNumber($event)">
+      <ion-segment-button value="1">
+        <ion-label>1</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>2</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        <ion-label>3</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="4">
+        <ion-label>4</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="5">
+        <ion-label>5</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Leave some comments</ion-label>
+    <ion-textarea [(ngModel)]="review"></ion-textarea>
+  </ion-item>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-button expand="block" color="tertiary" (click)="writeReview()">Submit</ion-button>
+</ion-footer>

@@ -14,9 +14,6 @@
     <ion-list-header>Clinic Result</ion-list-header>
 
     <ion-item *ngFor="let item of itemsClinic" (click)="clinicProfile(item.clinic_id)">
-      <ion-avatar slot="start">
-        <img src="{{item.clinicimg_filename}}">
-      </ion-avatar>
       <ion-label>
         <h2>{{item.clinic_name}}</h2>
         <p>{{item.clinic_address}}</p>
@@ -28,14 +25,13 @@
   <ion-list>
     <ion-list-header>Doctor Result</ion-list-header>
 
-    <ion-item *ngFor="let item of itemsClinic" (click)="clinicProfile(item.clinic_id)">
+    <ion-item *ngFor="let item of itemsDoctor" (click)="doctorProfile(item.doctor_id)">
       <ion-avatar slot="start">
-        <img src="{{item.clinicimg_filename}}">
+        <img src="{{imgURL}}{{item.clinic_id}}/doctor/{{item.doctor_avatar}}">
       </ion-avatar>
       <ion-label>
-        <h2>{{item.clinic_name}}</h2>
-        <h3>{{item.clinic_contact}}</h3>
-        <p>{{item.clinic_address}}</p>
+        <h2>{{item.doctor_lastname}} {{item.doctor_firstname}}</h2>
+        <h3>{{item.speciality_name}}</h3>
       </ion-label>
     </ion-item>
 
